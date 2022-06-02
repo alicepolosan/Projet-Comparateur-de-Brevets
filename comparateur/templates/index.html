@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href={{ url_for("static", filename="css/main.css") }}>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+        <script type="text/javascript" src={{ url_for("static", filename="js/main.js") }}></script>
+    </head>
+    <body>
+        <label for="annee_depot"> Année de dépôt (JJ/MM/AAAA):</label>
+        <input type="text" id="annee_depot" name = "annee_depot" required minlength="10" maxlength="10" size="10">
+        <label for="annee_delivrance"> Année de délivrance (JJ/MM/AAAA):</label>
+        <input type="text" id="annee_delivrance" name = "annee_delivrance" required minlength="10" maxlength="10" size="10">
+
+        <div class="pays">
+            <label for="1"> Albanie</label>
+            <input type="checkbox" name="1" id="1">
+            <label for="France"> France</label>
+            <input type="checkbox" name="France" id="France">
+        </div>
+        
+    </body>
+</html>
