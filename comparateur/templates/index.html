@@ -1,21 +1,52 @@
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href={{ url_for("static", filename="css/main.css") }}>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
-        <script type="text/javascript" src={{ url_for("static", filename="js/main.js") }}></script>
-    </head>
-    <body>
-        <label for="annee_depot"> Année de dépôt (JJ/MM/AAAA):</label>
-        <input type="text" id="annee_depot" name = "annee_depot" required minlength="10" maxlength="10" size="10">
-        <label for="annee_delivrance"> Année de délivrance (JJ/MM/AAAA):</label>
-        <input type="text" id="annee_delivrance" name = "annee_delivrance" required minlength="10" maxlength="10" size="10">
+{% extends 'base.html' %}
 
-        <div class="pays">
-            <label for="1"> Albanie</label>
-            <input type="checkbox" name="1" id="1">
-            <label for="France"> France</label>
-            <input type="checkbox" name="France" id="France">
-        </div>
-        
-    </body>
-</html>
+{% block content %}
+    <h1>{% block title %} Estimer le coût de mon brevet {% endblock %}</h1>
+
+    <form method="POST" action="/">
+        {{ form.csrf_token }}
+        <p>
+            {{ form.annee_depot.label }}
+            {{ form.annee_depot(size=20) }}
+        </p>
+
+        {% if form.annee_depot.errors %}
+            <ul class="errors">
+                {% for error in form.annee_depot.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p>
+            {{ form.annee_delivrance.label }}
+            {{ form.annee_delivrance(size=20) }}
+        </p>
+
+        {% if form.annee_delivrance.errors %}
+            <ul class="errors">
+                {% for error in form.annee_delivrance.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p>
+            {{ form.pays.label }}
+            {{ form.pays() }}
+        </p>
+
+        {% if form.pays.errors %}
+            <ul class="errors">
+                {% for error in form.pays.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p>
+            <input type="submit" value="Valider">
+        </p>
+    </form>
+
+{% endblock %}

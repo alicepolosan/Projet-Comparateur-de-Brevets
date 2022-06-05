@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Resultats {% endblock %}</h1>
+    <hr>
+    {% for brevet in brevet_list %}
+        <h2> {{ brevet['annee_depot'] }} </h2>
+        <h4> {{ brevet['annee_delivrance'] }} </h4>
+        <p> {{ brevet['pays'] }} </p>
+    {% endfor %}
+{% endblock %}

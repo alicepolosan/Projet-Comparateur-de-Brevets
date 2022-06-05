@@ -1,16 +1,31 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template, redirect, url_for
+from form import BrevetForm
 from flask_socketio import SocketIO
-#from backend import Calculs
+
 
 app = Flask(__name__)
 socketio = SocketIO(app)
-#calculs = Calculs()
+app.config['SECRET_KEY'] = 'your secret key'
 
-@app.route("/")
+
+brevet_list = []
+
+
+@app.route('/', methods=('GET', 'POST'))
 def index():
-    return render_template("index.html")
+    form = BrevetForm()
+    if form.validate_on_submit():
+        brevet_list.append({'annee_depot': form.annee_depot.data,
+                             'annee_delivrance': form.annee_delivrance.data,
+                             'pays': form.pays.data,
+                             })
+        return redirect(url_for('resultats'))
+    return render_template('index.html', form=form)
+
+@app.route('/resultats/')
+def resultats():
+    return render_template('resultats.html', brevet_list=brevet_list)
 
 
 if __name__=="__main__":
     socketio.run(app, port=5001)
-
