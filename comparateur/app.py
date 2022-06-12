@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 from form import BrevetForm
 from flask_socketio import SocketIO
+from calculs import calcul
 
 
 app = Flask(__name__)
@@ -24,7 +25,8 @@ def index():
 
 @app.route('/resultats/')
 def resultats():
-    return render_template('resultats.html', brevet_list=brevet_list)
+    resultat = calcul(brevet_list)
+    return render_template('resultats.html', brevet_list=brevet_list, resultat = resultat)
 
 
 if __name__=="__main__":
