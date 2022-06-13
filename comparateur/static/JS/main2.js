@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 
 const ctx = document.getElementById('myChart');
 let list = [12, 19, 3, 5, 2, 3]
@@ -34,4 +35,6 @@ const myChart = new Chart(ctx, {
             }
         }
     }
+});
+
 });
