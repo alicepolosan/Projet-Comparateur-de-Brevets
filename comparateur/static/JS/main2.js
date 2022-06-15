@@ -1,15 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     const barCanvas = document.getElementById("BarCanvas");
-
+    let list0 = JSON.parse("[" + document.getElementById("list0").textContent + "]")[0]
+    console.log(list0)
+    let list1 = JSON.parse("[" + document.getElementById("list1").textContent + "]")[0]
+    let list2 = JSON.parse("[" + document.getElementById("list2").textContent + "]")[0]
+    let list3 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
+    let list4 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
     const mixedChart = new Chart(barCanvas, {
         type:'bar',
         data: {
-            labels: ['2021','2022','2023','2024'],
+            labels: list0,
             datasets: [
                 {
                     type : 'line',
                     label: 'Coûts cumulés',
-                    data: [3600, 6600, 11000, 13600],
+                    data: list1,
                     fill: false,
                     backgroundColor: 'blue',
                     borderColor: 'blue'
@@ -17,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     type : 'line',
                     label: 'Coûts cumulés',
-                    data: [3000, 6200, 9100, 13700],
+                    data: list2,
                     fill: false,
                     backgroundColor: 'green',
                     borderColor: 'green'
@@ -25,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                 type : 'bar',
                 label: 'Coûts par année - Brevet Unitaire',
-                data: [3000, 3200, 2900, 4000],
+                data: list3,
                 backgroundColor: [
                     'lightgreen',
                     'lightgreen',
@@ -36,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 type : 'bar',
                 label: 'Coûts par année - Brevet Européen',
-                data: [3600, 3000, 3500, 2600],
+                data: list4,
                 backgroundColor: [
                     'lightblue',
                     'lightblue',
