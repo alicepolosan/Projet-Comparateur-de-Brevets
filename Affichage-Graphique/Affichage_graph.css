@@ -4,6 +4,18 @@ body {
 }
 
 .Chart {
-    width: 50% ;
+    width: 60% ;
     margin: 20px;
 }
+
+.Pays {
+    width : 30%;
+    height : 50%;
+    border: 2px solid gray;
+    background-color: white;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: auto;
+    margin: 40px; 
+ }

@@ -1,40 +1,61 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const barCanvas = document.getElementById("BarCanvas");
 
-const ctx = document.getElementById('myChart');
-let list = [12, 19, 3, 5, 2, 3]
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: list ,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+    const mixedChart = new Chart(barCanvas, {
+        type:'bar',
+        data: {
+            labels: ['2021','2022','2023','2024'],
+            datasets: [
+                {
+                    type : 'line',
+                    label: 'Coûts cumulés',
+                    data: [3600, 6600, 11000, 13600],
+                    fill: false,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue'
+                },
+                {
+                    type : 'line',
+                    label: 'Coûts cumulés',
+                    data: [3000, 6200, 9100, 13700],
+                    fill: false,
+                    backgroundColor: 'green',
+                    borderColor: 'green'
+                },
+                {
+                type : 'bar',
+                label: 'Coûts par année - Brevet Unitaire',
+                data: [3000, 3200, 2900, 4000],
+                backgroundColor: [
+                    'lightgreen',
+                    'lightgreen',
+                    'lightgreen',
+                    'lightgreen'],
+                borderColor:'white'
+            }, 
+            {
+                type : 'bar',
+                label: 'Coûts par année - Brevet Européen',
+                data: [3600, 3000, 3500, 2600],
+                backgroundColor: [
+                    'lightblue',
+                    'lightblue',
+                    'lightblue',
+                    'lightblue'],
+                borderColor:'white'
+            }]
+        },
+        options: { 
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title:'Coûts (€)'
+                },
+                x : {
+                    title:'Temps (année)'
+                }
             }
         }
-    }
-});
+    });
+}); 
 
-});

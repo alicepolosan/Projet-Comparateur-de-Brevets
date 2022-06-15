@@ -5,31 +5,55 @@ document.addEventListener("DOMContentLoaded", () => {
         type:'bar',
         data: {
             labels: ['2021','2022','2023','2024'],
-            datasets: [{
+            datasets: [
+                {
+                    type : 'line',
+                    label: 'Coûts cumulés',
+                    data: [3600, 6600, 11000, 13600],
+                    fill: false,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue'
+                },
+                {
+                    type : 'line',
+                    label: 'Coûts cumulés',
+                    data: [3000, 6200, 9100, 13700],
+                    fill: false,
+                    backgroundColor: 'green',
+                    borderColor: 'green'
+                },
+                {
                 type : 'bar',
-                label: 'Coûts par année',
+                label: 'Coûts par année - Brevet Unitaire',
                 data: [3000, 3200, 2900, 4000],
                 backgroundColor: [
-                    'pink',
-                    'lightblue',
                     'lightgreen',
-                    'yellow'],
+                    'lightgreen',
+                    'lightgreen',
+                    'lightgreen'],
                 borderColor:'white'
-            }, {
-                type : 'line',
-                label: 'Coûts cumulés',
-                data: [3000, 6200, 9100, 13700],
-                fill: false,
-                backgroundColor: 'crimson',
-                borderColor: 'crimson'
+            }, 
+            {
+                type : 'bar',
+                label: 'Coûts par année - Brevet Européen',
+                data: [3600, 3000, 3500, 2600],
+                backgroundColor: [
+                    'lightblue',
+                    'lightblue',
+                    'lightblue',
+                    'lightblue'],
+                borderColor:'white'
             }]
         },
         options: { 
             scales: {
-                yAxes: [{
-                    suggestedMax: 6000,
-                    suggestedMin: 1000
-                }]
+                y: {
+                    suggestedMin: 0,
+                    title:'Coûts (€)'
+                },
+                x : {
+                    title:'Temps (année)'
+                }
             }
         }
     });

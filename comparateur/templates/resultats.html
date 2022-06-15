@@ -8,8 +8,13 @@
         <h4> {{ brevet['annee_delivrance'] }} </h4>
         <p> {{ brevet['pays'] }} </p>
     {% endfor %}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
-    <script type="text/javascript" src={{ url_for("static", filename="JS/main2.js") }}></script>
-    <canvas id="myChart" width="400" height="400"></canvas>
+
+        
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+     <script src="Affichage_graph.js"></script>
+  
+    <div class = 'Chart'>
+        <canvas id="BarCanvas" aria-label="chart" role ="img"> </canvas>
+    </div>
 {% endblock %}
 </div>
