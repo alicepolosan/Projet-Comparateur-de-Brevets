@@ -2,11 +2,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     var socket = io.connect("http://" + document.domain + ":" + location.port);
 
-    /*socket.on("response", function(resultat){*/
-
+    socket.on("response", function(resultat){
         console.log("coucou")
         const ctx = document.getElementById('myChart');
-        let list = document.getElementById('resultat')
+        let list = resultat
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -41,5 +40,5 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 }
             }
         });
-    /*})*/
+    })
 });

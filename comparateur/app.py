@@ -26,6 +26,7 @@ def index():
 @app.route('/resultats/')
 def resultats():
     resultat = calcul(brevet_list)
+    socketio.emit("response", resultat)
     return render_template('resultats.html', brevet_list=brevet_list, resultat = resultat)
 
 
