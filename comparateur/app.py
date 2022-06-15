@@ -16,11 +16,14 @@ brevet_list = []
 def index():
     form = BrevetForm()
     if form.validate_on_submit():
-        brevet_list.append({'annee_depot': form.annee_depot.data,
-                             'annee_delivrance': form.annee_delivrance.data,
-                             'pays': form.pays.data,
-                             })
-        return redirect(url_for('resultats'))
+        if int(form.annee_delivrance.data) - 20 < int(form.annee_depot.data):
+            brevet_list.append({'annee_depot': form.annee_depot.data,
+                                'annee_delivrance': form.annee_delivrance.data,
+                                'pays': 0,
+                                })
+            return redirect(url_for('resultats'))
+        else:
+            return render_template('erreur.html')
     return render_template('index.html', form=form)
 
 @app.route('/resultats/')
