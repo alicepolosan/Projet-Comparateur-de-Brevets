@@ -6,7 +6,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         console.log("coucou")
         const ctx = document.getElementById('myChart');
-        let list = document.getElementById('resultat')
+        let list = JSON.parse("[" + document.getElementById('resultat').textContent + "]")[0];
+        console.log( typeof list)
+        console.log(list)
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
