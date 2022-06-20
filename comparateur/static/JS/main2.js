@@ -1,40 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-const ctx = document.getElementById('myChart');
-let list = [12, 19, 3, 5, 2, 3]
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: list ,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+    const barCanvas = document.getElementById("BarCanvas");
+    let list0 = JSON.parse("[" + document.getElementById("list0").textContent + "]")[0]
+    console.log(list0)
+    let list1 = JSON.parse("[" + document.getElementById("list1").textContent + "]")[0]
+    let list2 = JSON.parse("[" + document.getElementById("list2").textContent + "]")[0]
+    let list3 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
+    let list4 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
+    const mixedChart = new Chart(barCanvas, {
+        type:'bar',
+        data: {
+            labels: list0,
+            datasets: [
+                {
+                    type : 'line',
+                    label: 'Coûts cumulés',
+                    data: list1,
+                    fill: false,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue'
+                },
+                {
+                    type : 'line',
+                    label: 'Coûts cumulés',
+                    data: list2,
+                    fill: false,
+                    backgroundColor: 'green',
+                    borderColor: 'green'
+                },
+                {
+                type : 'bar',
+                label: 'Coûts par année - Brevet Unitaire',
+                data: list3,
+                backgroundColor: [
+                    'lightgreen',
+                    'lightgreen',
+                    'lightgreen',
+                    'lightgreen'],
+                borderColor:'white'
+            }, 
+            {
+                type : 'bar',
+                label: 'Coûts par année - Brevet Européen',
+                data: list4,
+                backgroundColor: [
+                    'lightblue',
+                    'lightblue',
+                    'lightblue',
+                    'lightblue'],
+                borderColor:'white'
+            }]
+        },
+        options: { 
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title:'Coûts (€)'
+                },
+                x : {
+                    title:'Temps (année)'
+                }
             }
         }
-    }
-});
+    });
+}); 
 
-});
