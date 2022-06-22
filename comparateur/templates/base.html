@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="#">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <link rel="shortcut icon" href= '#'> 
+    <link rel="stylesheet" href="main.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %} - FlaskApp</title>
     <style>
@@ -13,11 +14,13 @@
             text-decoration: none;
         }
     </style>
+    
 </head>
 <body>
     <nav>
         <a href="{{ url_for('index') }}">Formulaire</a>
         <a href="{{ url_for('resultats') }}">Resultats</a>
+    
     </nav>
     <hr>
     <div class="content">
