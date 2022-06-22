@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let list1 = JSON.parse("[" + document.getElementById("list1").textContent + "]")[0]
     let list2 = JSON.parse("[" + document.getElementById("list2").textContent + "]")[0]
     let list3 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
-    let list4 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
+    let list4 = JSON.parse("[" + document.getElementById("list4").textContent + "]")[0]
     const mixedChart = new Chart(barCanvas, {
         type:'bar',
         data: {
