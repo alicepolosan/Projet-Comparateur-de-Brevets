@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             datasets: [
                 {
                     type : 'line',
-                    label: 'Coûts cumulés',
+                    label: 'Coûts cumulés - Brevet Européen',
                     data: list1,
                     fill: false,
                     backgroundColor: 'blue',
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     type : 'line',
-                    label: 'Coûts cumulés',
+                    label: 'Coûts cumulés - Brevet Unitaire',
                     data: list2,
                     fill: false,
                     backgroundColor: 'green',
@@ -45,18 +45,22 @@ document.addEventListener("DOMContentLoaded", () => {
         options: { 
             title: {
                 display: true,
+                fontSize: 25 ,
                 position : 'top',
                 text: 'Comparateur Brevet Unitaire et Brevet Européen'
             },
             scales: {
                 yAxes: [{
                     scaleLabel: {
+                    beginAtZero : true,
                     display: true,
+                    grace : '10%',
                     labelString: 'Coûts (en euros)'
                     }
                 }],
                 xAxes: [{
                     scaleLabel: {
+                    beginAtZero : true,
                     display: true,
                     labelString: 'Année'
                     }
