@@ -43,12 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }]
         },
         options: { 
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Comparateur Brevet Unitaire et Brevet Européen'
-                }
-            },
+            title: {
+                display: true,
+                text: 'Comparateur Brevet Unitaire et Brevet Européen'
+                },
             scales: {
                 y: {
                     beginAtZero: true,

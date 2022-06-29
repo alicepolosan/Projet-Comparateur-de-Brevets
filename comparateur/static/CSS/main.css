@@ -10,21 +10,21 @@ body {
 
 .Chart {
     grid-column: 1;
-    width: 100% ; /* 60% */ 
+    width: 100% ;
     margin: 20px;
 }
 
 .Pays {
     grid-column: 2;
-    width : 30%;
-    height : 50%;
+    /*width : 30%;*/
+    /*height : 50%;*/
     border: 2px solid gray;
     background-color: white;
     text-align: center;
-    box-sizing: border-box;
-    border-radius: 5px;
-    padding: auto;
-    margin: 40px; 
+    box-sizing: content-box;
+    /*border-radius: 5px;*/
+    /*padding: auto;*/
+    /*margin: 40px; */
  }
 
 
