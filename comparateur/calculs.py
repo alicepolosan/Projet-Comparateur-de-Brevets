@@ -130,7 +130,7 @@ def couts_année (brevet_list):
     data=data[indices]
     sommes= data.sum()
     couts_BE= json.dumps(sommes.to_numpy().tolist())
-    couts_BU= json.dumps(np.sum(couts_BU_annees).tolist())
+    couts_BU= json.dumps(couts_BU_annees)
     return couts_BE, couts_BU
 
 #print(couts_année(brevet_lt))
@@ -150,4 +150,4 @@ def calcul (brevet_list):
     couts_BE,couts_BU = couts_cumulés(brevet_list)
     couts_BE_per_year,couts_BU_per_year= couts_année(brevet_list)
     list_year=liste_annees(brevet_list)
-    return list_year,couts_BE,couts_BU, couts_BE_per_year,couts_BU_per_year
+    return list_year,couts_BE,couts_BU, couts_BU_per_year, couts_BE_per_year
