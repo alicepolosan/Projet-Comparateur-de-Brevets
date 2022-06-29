@@ -133,7 +133,7 @@ def couts_année (brevet_list):
     for country in pays:
         if df.loc[country,'BU']=='non':
            couts_BU_provisoire = np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()
-    couts_BU = json.dumps((couts_BU_provisoire.tolist()) [:n])
+    couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n])
     return couts_BE, couts_BU
 
 
@@ -161,7 +161,7 @@ def calcul (brevet_list):
     list_year=liste_annees(brevet_list)
     return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year
 
-#list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
+list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
 
-#print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
+print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
 
