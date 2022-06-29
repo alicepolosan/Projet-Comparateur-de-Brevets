@@ -2,12 +2,7 @@
 <div>
 {% block content %}
     <h1>{% block title %} Resultats {% endblock %}</h1>
-    <hr>
-    {% for brevet in brevet_list %}
-        <h2> {{ brevet['annee_depot'] }} </h2>
-        <h4> {{ brevet['annee_delivrance'] }} </h4>
-        <!--<p> {{ brevet['pays'] }} </p> !--> 
-    {% endfor %}
+    
     <p id = "list0"> {{list0}}</p>
     <p id = "list1"> {{list1}}</p>
     <p id = "list2"> {{list2}}</p>
@@ -28,8 +23,8 @@
                 {% for pays in brevet['pays'] %}
                 <p> {{ pays }} </p>
                 {% endfor %}  
-            <h3> Année de dépot : {{ brevet['annee_depot'] }} </h3> 
-            <h3> Année de délivrance : {{ brevet['annee_delivrance'] }} </h3>
+            <h4> Année de dépot : {{ brevet['annee_depot'] }} </h4> 
+            <h4> Année de délivrance : {{ brevet['annee_delivrance'] }} </h4>
             {% endfor %}
         </div>
     </div>
