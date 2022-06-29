@@ -45,16 +45,22 @@ document.addEventListener("DOMContentLoaded", () => {
         options: { 
             title: {
                 display: true,
+                position : 'top',
                 text: 'Comparateur Brevet Unitaire et Brevet Européen'
-                },
+            },
             scales: {
-                y: {
-                    beginAtZero: true,
-                    title:'Coûts (€)'
-                },
-                x : {
-                    title:'Temps (année)'
-                }
+                yAxes: [{
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Coûts (en euros)'
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Année'
+                    }
+                }],
             }
         }
     });
