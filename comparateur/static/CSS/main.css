@@ -20,6 +20,11 @@ body {
     margin: 40px; 
  }
 
+.Résultats {
+    display: grid;
+}
+
+
 #list0 { 
     display : none
 }
