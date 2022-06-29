@@ -12,7 +12,6 @@ BU= ['non']*n
 L_oui=[1,2,3,4,7,9,10,11,16,17,19,20,22,25,27,34,35]
 for i in L_oui:
     BU[i]= 'oui'
-BU[-1]
 
 indice= Pays.index('République Tchèque')
 
@@ -20,6 +19,7 @@ année_1=[0]*n
 année_1[indice]= 41.00
 
 année_2=[0]*n
+année_2[0]=42
 année_2[1]=42
 année_2[11]=38
 année_2[13]=46.55
@@ -118,8 +118,8 @@ def liste_annees (brevet_list):
     year_list= list(np.arange(annee_delivrance,annee_fin))
     return year_list
 
-brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne'] }]
-print(liste_annees (brevet_lt), len(liste_annees (brevet_lt)))
+brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne', 'Albanie'] }]
+#print(liste_annees (brevet_lt), len(liste_annees (brevet_lt)))
 
 def couts_année (brevet_list):
     dic=brevet_list[-1]
@@ -147,7 +147,11 @@ def couts_cumulés (brevet_list):
     return couts_BE, couts_BU
 
 def calcul (brevet_list):
-    couts_BE,couts_BU = couts_cumulés(brevet_list)
+    couts_BE_cumul,couts_BU_cumul = couts_cumulés(brevet_list)
     couts_BE_per_year,couts_BU_per_year= couts_année(brevet_list)
     list_year=liste_annees(brevet_list)
-    return list_year,couts_BE,couts_BU, couts_BU_per_year, couts_BE_per_year
+    return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year
+
+#list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
+
+#print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
