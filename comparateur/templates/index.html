@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
     <h1>{% block title %} Estimer le coût de mon brevet {% endblock %}</h1>
 
@@ -30,149 +29,163 @@
                 {% endfor %}
             </ul>
         {% endif %}
-
-        <p>
-            {{ form.p_0.label }}
-            {{ form.p_0(size=20) }}
-        </p>
-
-        <p>
-            {{ form.p_1.label }}
-            {{ form.p_1(size=20) }}
-        </p>
-
-        <p>
-            {{ form.p_2.label }}
-            {{ form.p_2(size=20) }}
-        </p>
-
-        <p>
-            {{ form.p_3.label }}
-            {{ form.p_3(size=20) }}
-        </p>
-        <p>
-            {{ form.p_4.label }}
-            {{ form.p_4(size=20) }}
-        </p>
-        <p>
-            {{ form.p_5.label }}
-            {{ form.p_5(size=20) }}
-        </p>
-        <p>
-            {{ form.p_6.label }}
-            {{ form.p_6(size=20) }}
-        </p>
-        <p>
-            {{ form.p_7.label }}
-            {{ form.p_7(size=20) }}
-        </p>
-        <p>
-            {{ form.p_8.label }}
-            {{ form.p_8(size=20) }}
-        </p>
-        <p>
-            {{ form.p_9.label }}
-            {{ form.p_9(size=20) }}
-        </p>
-        <p>
-            {{ form.p_10.label }}
-            {{ form.p_10(size=20) }}
-        </p>
-        <p> {{ form.p_11.label }}
-            {{ form.p_11(size=20) }}
-        </p>
-        <p> {{ form.p_12.label }}
-                    {{ form.p_12(size=20) }}
-                </p>
-        <p> {{ form.p_13.label }}
-                    {{ form.p_13(size=20) }}
-                </p>
-        <p> {{ form.p_14.label }}
-                    {{ form.p_14(size=20) }}
-                </p>
-        <p> {{ form.p_15.label }}
-                    {{ form.p_15(size=20) }}
-                </p>
-        <p> {{ form.p_16.label }}
-                    {{ form.p_16(size=20) }}
-                </p>
-        <p> {{ form.p_17.label }}
-                    {{ form.p_17(size=20) }}
-                </p>
-        <p> {{ form.p_18.label }}
-                    {{ form.p_18(size=20) }}
-                </p>
-        <p> {{ form.p_19.label }}
-                    {{ form.p_19(size=20) }}
-                </p>
-        <p> {{ form.p_20.label }}
-                    {{ form.p_20(size=20) }}
-                </p>
-        <p> {{ form.p_21.label }}
-                    {{ form.p_21(size=20) }}
-                </p>
-        <p> {{ form.p_22.label }}
-                    {{ form.p_22(size=20) }}
-                </p>
-        <p> {{ form.p_23.label }}
-                    {{ form.p_23(size=20) }}
-                </p>
-        <p> {{ form.p_24.label }}
-                    {{ form.p_24(size=20) }}
-                </p>
-        <p> {{ form.p_25.label }}
-                    {{ form.p_25(size=20) }}
-                </p>
-        <p> {{ form.p_26.label }}
-                    {{ form.p_26(size=20) }}
-                </p>
-        <p> {{ form.p_27.label }}
-                    {{ form.p_27(size=20) }}
-                </p>
-        <p> {{ form.p_28.label }}
-                    {{ form.p_28(size=20) }}
-                </p>
-        <p> {{ form.p_29.label }}
-                    {{ form.p_29(size=20) }}
-                </p>
-        <p> {{ form.p_30.label }}
-                    {{ form.p_30(size=20) }}
-                </p>
-        <p> {{ form.p_31.label }}
-                    {{ form.p_31(size=20) }}
-                </p>
-        <p> {{ form.p_32.label }}
-                    {{ form.p_32(size=20) }}
-                </p>
-        <p> {{ form.p_33.label }}
-                    {{ form.p_33(size=20) }}
-                </p>
-        <p> {{ form.p_34.label }}
-                    {{ form.p_34(size=20) }}
-                </p>
-        <p> {{ form.p_35.label }}
-                    {{ form.p_35(size=20) }}
-                </p>
-        <p> {{ form.p_36.label }}
-                    {{ form.p_36(size=20) }}
-                </p>
-        <p> {{ form.p_37.label }}
-                    {{ form.p_37(size=20) }}
+        <div class = "container">
+            <div class = "colonne1">
+                <p>
+                    {{ form.p_0.label }}
+                    {{ form.p_0(size=20) }}
                 </p>
 
+                <p class = "BU"
+                    style = "color: blue">
+                    {{ form.p_1.label }}
+                    {{ form.p_1(size=20) }}
+                </p>
 
+                <p class = "BU"
+                style = "color: blue">
+                    {{ form.p_2.label }}
+                    {{ form.p_2(size=20) }}
+                </p>
 
-
-
-
-
-
-
-
-
-        <p>
-            <input type="submit" value="Valider">
-        </p>
+                <p class = "BU"
+                style = "color: blue">
+                    {{ form.p_3.label }}
+                    {{ form.p_3(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue">
+                    {{ form.p_4.label }}
+                    {{ form.p_4(size=20) }}
+                </p>
+                <p>
+                    {{ form.p_5.label }}
+                    {{ form.p_5(size=20) }}
+                </p>
+                <p>
+                    {{ form.p_6.label }}
+                    {{ form.p_6(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue">
+                    {{ form.p_7.label }}
+                    {{ form.p_7(size=20) }}
+                </p>
+                <p>
+                    {{ form.p_8.label }}
+                    {{ form.p_8(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue">
+                    {{ form.p_9.label }}
+                    {{ form.p_9(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue">
+                    {{ form.p_10.label }}
+                    {{ form.p_10(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_11.label }}
+                    {{ form.p_11(size=20) }}
+                </p>
+                <p> {{ form.p_12.label }}
+                            {{ form.p_12(size=20) }}
+                </p>
+                <p> {{ form.p_13.label }}
+                            {{ form.p_13(size=20) }}
+                </p>
+            </div>
+            <div class = "colonne2">
+                <p> {{ form.p_14.label }}
+                            {{ form.p_14(size=20) }}
+                </p>
+                <p> {{ form.p_15.label }}
+                            {{ form.p_15(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_16.label }}
+                            {{ form.p_16(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_17.label }}
+                            {{ form.p_17(size=20) }}
+                </p>
+                <p> {{ form.p_18.label }}
+                            {{ form.p_18(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_19.label }}
+                            {{ form.p_19(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_20.label }}
+                            {{ form.p_20(size=20) }}
+                </p>
+                <p> {{ form.p_21.label }}
+                            {{ form.p_21(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_22.label }}
+                            {{ form.p_22(size=20) }}
+                </p>
+                <p> {{ form.p_23.label }}
+                            {{ form.p_23(size=20) }}
+                </p>
+                <p> {{ form.p_24.label }}
+                            {{ form.p_24(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_25.label }}
+                            {{ form.p_25(size=20) }}
+                </p>
+                <p> {{ form.p_26.label }}
+                            {{ form.p_26(size=20) }}
+                </p>
+            </div>
+            <div class = "colonne3">
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_27.label }}
+                            {{ form.p_27(size=20) }}
+                </p>
+                <p> {{ form.p_28.label }}
+                            {{ form.p_28(size=20) }}
+                </p>
+                <p> {{ form.p_29.label }}
+                            {{ form.p_29(size=20) }}
+                </p>
+                <p> {{ form.p_30.label }}
+                        {{ form.p_30(size=20) }}
+                </p>
+                <p> {{ form.p_31.label }}
+                        {{ form.p_31(size=20) }}
+                </p>
+                <p> {{ form.p_32.label }}
+                        {{ form.p_32(size=20) }}
+                </p>
+                <p> {{ form.p_33.label }}
+                        {{ form.p_33(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_34.label }}
+                        {{ form.p_34(size=20) }}
+                </p>
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_35.label }}
+                        {{ form.p_35(size=20) }}
+                </p>
+                <p> {{ form.p_36.label }}
+                        {{ form.p_36(size=20) }}
+                </p>
+                <p> {{ form.p_37.label }}
+                        {{ form.p_37(size=20) }}
+                </p>
+                <p>
+                <input type="submit" value="Valider">
+                </p>
+            </div>
+        </div>
+        <p style = "color: blue"> *Pays faisant partie du Brevet Unitaire</p><p>*Pays ne faisant pas partie du Brevet Unitaire</p>
     </form>
 
 {% endblock %}

@@ -23,12 +23,14 @@
         <canvas id="BarCanvas" aria-label="chart" role ="img"> </canvas>
         </div>
         <div class = 'Pays'>
-            <h2> <i class="fa fa-globe-europe"></i> Etats contractants </h2>
+            <h3> <i class="fa fa-globe-europe"></i> Etats contractants </h3>
             {% for brevet in brevet_list %}
-            {% for pays in brevet['pays'] %}
-            <p> {{ pays }} </p>
-            {% endfor %} 
-            {% endfor %} 
+                {% for pays in brevet['pays'] %}
+                <p> {{ pays }} </p>
+                {% endfor %}  
+            <h3> Année de dépot : {{ brevet['annee_depot'] }} </h3> 
+            <h3> Année de délivrance : {{ brevet['annee_delivrance'] }} </h3>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
