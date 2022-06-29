@@ -122,28 +122,39 @@ brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne',
 #print(liste_annees (brevet_lt), len(liste_annees (brevet_lt)))
 
 def couts_année (brevet_list):
+    n=len(liste_annees(brevet_list))
     dic=brevet_list[-1]
     pays= dic['pays']
     data= df.loc[pays]
-    indices=list(data.columns)[2:]
-    #print(indices)
+    indices=list(data.columns)[2:] 
     data=data[indices]
     sommes= data.sum()
-    couts_BE= json.dumps(sommes.to_numpy().tolist())
-    couts_BU= json.dumps(couts_BU_annees)
+    couts_BE= json.dumps((sommes.to_numpy().tolist())[:n])
+    couts_BU_provisoire=couts_BU_annees
+    for country in pays:
+        if df.loc[country,'BU']=='non':
+           couts_BU_provisoire = np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()
+    couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n])
     return couts_BE, couts_BU
 
 #print(couts_année(brevet_lt))
 
 def couts_cumulés (brevet_list):
+    n=len(liste_annees(brevet_list))
     dic=brevet_list[-1]
     pays= dic['pays']
     data= df.loc[pays]
     indices=list(data.columns)[2:]
     data=data[indices]
     sommes= data.sum()
-    couts_BE=json.dumps(np.cumsum(sommes.to_numpy()).tolist())
-    couts_BU=json.dumps(np.cumsum(np.array(couts_BU_annees)).tolist())
+    couts_BE=(np.cumsum(sommes.to_numpy()).tolist())[:n]
+    couts_BE=json.dumps(couts_BE)
+    couts_BU=np.cumsum(np.array(couts_BU_annees))
+    for country in pays:
+        if df.loc[country,'BU']=='non':
+           couts_BU = couts_BU + np.cumsum((data.loc[country]).to_numpy()).tolist()
+    couts_BU=couts_BU[:n]
+    couts_BU=json.dumps(couts_BU.tolist())
     return couts_BE, couts_BU
 
 def calcul (brevet_list):
@@ -155,3 +166,4 @@ def calcul (brevet_list):
 #list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
 
 #print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
+
