@@ -7,3 +7,35 @@ body {
     width: 60% ;
     margin: 20px;
 }
+
+.Pays {
+    width : 30%;
+    height : 50%;
+    border: 2px solid gray;
+    background-color: white;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: auto;
+    margin: 40px; 
+ }
+
+#list0 { 
+    display : none
+}
+
+#list1 {
+    display : none
+}
+
+#list2 { 
+    display : none
+}
+
+#list3 { 
+    display : none
+}
+
+#list4 { 
+    display : none
+}
