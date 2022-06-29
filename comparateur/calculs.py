@@ -118,8 +118,7 @@ def liste_annees (brevet_list):
     year_list= list(np.arange(annee_delivrance,annee_fin))
     return year_list
 
-brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne', 'Albanie'] }]
-#print(liste_annees (brevet_lt), len(liste_annees (brevet_lt)))
+brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne', 'Albanie']}]
 
 def couts_année (brevet_list):
     n=len(liste_annees(brevet_list))
@@ -137,7 +136,6 @@ def couts_année (brevet_list):
     couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n])
     return couts_BE, couts_BU
 
-#print(couts_année(brevet_lt))
 
 def couts_cumulés (brevet_list):
     n=len(liste_annees(brevet_list))
@@ -163,7 +161,7 @@ def calcul (brevet_list):
     list_year=liste_annees(brevet_list)
     return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year
 
-#list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
+list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
 
-#print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
+print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
 
