@@ -12,7 +12,6 @@ BU= ['non']*n
 L_oui=[1,2,3,4,7,9,10,11,16,17,19,20,22,25,27,34,35]
 for i in L_oui:
     BU[i]= 'oui'
-BU[-1]
 
 indice= Pays.index('République Tchèque')
 
@@ -130,7 +129,7 @@ def couts_année (brevet_list):
     data=data[indices]
     sommes= data.sum()
     couts_BE= json.dumps(sommes.to_numpy().tolist())
-    couts_BU= json.dumps(np.sum(couts_BU_annees).tolist())
+    couts_BU= json.dumps(couts_BU_annees)
     return couts_BE, couts_BU
 
 #print(couts_année(brevet_lt))
@@ -150,4 +149,4 @@ def calcul (brevet_list):
     couts_BE,couts_BU = couts_cumulés(brevet_list)
     couts_BE_per_year,couts_BU_per_year= couts_année(brevet_list)
     list_year=liste_annees(brevet_list)
-    return list_year,couts_BE,couts_BU, couts_BE_per_year,couts_BU_per_year
+    return list_year,couts_BE,couts_BU, couts_BU_per_year, couts_BE_per_year
