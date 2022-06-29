@@ -118,8 +118,7 @@ def liste_annees (brevet_list):
     year_list= list(np.arange(annee_delivrance,annee_fin))
     return year_list
 
-brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne', 'Albanie'] }]
-#print(liste_annees (brevet_lt), len(liste_annees (brevet_lt)))
+brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne', 'Albanie']}]
 
 def couts_année (brevet_list):
     n=len(liste_annees(brevet_list))
@@ -134,10 +133,9 @@ def couts_année (brevet_list):
     for country in pays:
         if df.loc[country,'BU']=='non':
            couts_BU_provisoire = np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()
-    couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n])
+    couts_BU = json.dumps((couts_BU_provisoire.tolist()) [:n])
     return couts_BE, couts_BU
 
-#print(couts_année(brevet_lt))
 
 def couts_cumulés (brevet_list):
     n=len(liste_annees(brevet_list))
