@@ -52,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 yAxes: [{
                     scaleLabel: {
                     display: true,
-                    labelString: 'probability'
+                    labelString: 'Coûts (en euros)'
                     }
                 }],
                 xAxes: [{
                     scaleLabel: {
                     display: true,
-                    labelString: 'hola'
+                    labelString: 'Année'
                     }
                 }],
             }
