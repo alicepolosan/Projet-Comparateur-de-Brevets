@@ -4,7 +4,7 @@ body {
 }
 
 .Chart {
-    width: 60% ;
+    width: 100% ; /* 60% */ 
     margin: 20px;
 }
 
