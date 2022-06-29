@@ -20,6 +20,7 @@ année_1[indice]= 41.00
 
 année_2=[0]*n
 année_2[0]=42
+année_2[1]=42
 année_2[11]=38
 année_2[13]=46.55
 année_2[23]=30
@@ -151,6 +152,6 @@ def calcul (brevet_list):
     list_year=liste_annees(brevet_list)
     return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year
 
-list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
+#list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
 
 #print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
