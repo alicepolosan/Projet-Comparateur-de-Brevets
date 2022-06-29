@@ -31,22 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 type : 'bar',
                 label: 'Coûts par année - Brevet Unitaire',
                 data: list3,
-                backgroundColor: [
-                    'lightgreen',
-                    'lightgreen',
-                    'lightgreen',
-                    'lightgreen'],
+                backgroundColor:'lightgreen',
                 borderColor:'white'
             }, 
             {
                 type : 'bar',
                 label: 'Coûts par année - Brevet Européen',
                 data: list4,
-                backgroundColor: [
-                    'lightblue',
-                    'lightblue',
-                    'lightblue',
-                    'lightblue'],
+                backgroundColor:'lightblue',
                 borderColor:'white'
             }]
         },
