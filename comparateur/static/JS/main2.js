@@ -43,16 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }]
         },
         options: { 
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Comparateur Brevet Unitaire et Brevet Européen'
-                }
+            title: {
+                display: true,
+                position : 'top',
+                text: 'Comparateur Brevet Unitaire et Brevet Européen'
             },
             scales: {
                 y: {
-                    beginAtZero: true,
-                    title:'Coûts (€)'
+                    display : true,
+                    text:'Coûts (€)',
                 },
                 x : {
                     title:'Temps (année)'
