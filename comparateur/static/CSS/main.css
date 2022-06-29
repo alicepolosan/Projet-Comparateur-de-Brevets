@@ -2,12 +2,20 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.Résultats {
+
+    display: grid;
+    grid-template-columns: repeat(2);
+}
+
 .Chart {
-    width: 60% ;
+    grid-column: 1;
+    width: 100% ; /* 60% */ 
     margin: 20px;
 }
 
 .Pays {
+    grid-column: 2;
     width : 30%;
     height : 50%;
     border: 2px solid gray;
@@ -18,6 +26,7 @@ body {
     padding: auto;
     margin: 40px; 
  }
+
 
 #list0 { 
     display : none

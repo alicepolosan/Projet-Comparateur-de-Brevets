@@ -6,26 +6,30 @@
     {% for brevet in brevet_list %}
         <h2> {{ brevet['annee_depot'] }} </h2>
         <h4> {{ brevet['annee_delivrance'] }} </h4>
-        <p> {{ brevet['pays'] }} </p>
+        <!--<p> {{ brevet['pays'] }} </p> !--> 
     {% endfor %}
     <p id = "list0"> {{list0}}</p>
     <p id = "list1"> {{list1}}</p>
     <p id = "list2"> {{list2}}</p>
     <p id = "list3"> {{list3}}</p>
     <p id = "list4"> {{list4}}</p>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script type="text/javascript" src={{ url_for("static", filename="JS/main2.js") }}></script>
-    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename = 'CSS/main.css')}}> 
-    <div class = 'Chart'>
-    <canvas id="BarCanvas" aria-label="chart" role ="img"> </canvas>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename = 'CSS/main.css') }}/> 
+    
+    <div class = 'Résultats'>
+        <div class = 'Chart'>
+        <canvas id="BarCanvas" aria-label="chart" role ="img"> </canvas>
+        </div>
+        <div class = 'Pays'>
+            <h2> <i class="fa fa-globe-europe"></i> Etats contractants </h2>
+            {% for brevet in brevet_list %}
+            {% for pays in brevet['pays'] %}
+            <p> {{ pays }} </p>
+            {% endfor %} 
+            {% endfor %} 
+        </div>
     </div>
-    <div class = 'Pays'>
-        <h2> <i class="fa fa-globe-europe"></i> Etats contractants </h2>
-        <p> <i class="fa fa-square-check"></i> Allemagne </p>
-        <p> <i class="fa-light fa-square-check"></i> Belgique </p>
-        <p> <i class="fa-light fa-square-check"></i> Espagne </p>
-        <p> <i class="fa-light fa-square-check"></i> France </p>
-        <p> <i class="fa-light fa-square-check"></i> Italie </p>
-     </div>
 {% endblock %}
 </div>
