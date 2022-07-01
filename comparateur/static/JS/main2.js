@@ -1,7 +1,62 @@
+
+let map = new Map()
+map.set(" Albanie ",  "black")
+map.set(" Allemagne ", "blue")
+map.set(" Autriche ", "blue")
+map.set(" Bulgarie ", "blue")
+map.set(" Belgique ", "blue")
+map.set(" Danemark ", "blue")
+map.set(" Estonie ", "blue")
+map.set(" Finlande ", "blue")
+map.set(" France ", "blue")
+map.set(" Italie ", "blue")
+map.set(" Lettonie ", "blue")
+map.set(" Lituanie ", "blue")
+map.set(" Luxembourg ", "blue")
+map.set(" Malte ", "blue")
+map.set(" Pays-Bas ", "blue")
+map.set(" Portugal ", "blue")
+map.set(" Slovénie ", "blue")
+map.set(" Suède ", "blue")
+map.set(" Chypre ", "black")
+map.set(" Croatie ", "black")
+map.set(" Espagne ", "black")
+map.set(" Grèce ", "black")
+map.set(" Hongrie ", "black")
+map.set(" Irlande ", "black")
+map.set(" Islande ", "black")
+map.set(" Liechtenstein (cf. Suisse) ", "black")
+map.set(" Macédoine du Nord ", "black")
+map.set(" Monaco ", "black")
+map.set(" Norvège ", "black")
+map.set(" Pologne ", "black")
+map.set(" République Tchèque ", "black")
+map.set(" Roumanie ", "black")
+map.set(" Royaume-Uni ", "black")
+map.set(" Saint-Marin ", "black")
+map.set(" Serbie ", "black")
+map.set(" Slovaquie ", "black")
+map.set(" Suisse ", "black")
+map.set(" Turquie ", "black")
+
 document.addEventListener("DOMContentLoaded", () => {
+    
     const barCanvas = document.getElementById("BarCanvas");
+    let Pays_p = document.querySelectorAll(".pays-recup");
+    let Pays = [];
+    for (let i = 0; i < Pays_p.length; i++) {
+        Pays.push(Pays_p[i].textContent);
+    }
+    console.log(Pays)
+    for (let i = 0; i < Pays.length; i++) {
+        let my_p = document.createElement('p')
+        console.log(Pays[i])
+        console.log(map.get(Pays[i]))
+        my_p.textContent = Pays[i]
+        my_p.style.color = map.get(Pays[i])
+        document.getElementById('Pays').append(my_p)
+    }
     let list0 = JSON.parse("[" + document.getElementById("list0").textContent + "]")[0]
-    console.log(list0)
     let list1 = JSON.parse("[" + document.getElementById("list1").textContent + "]")[0]
     let list2 = JSON.parse("[" + document.getElementById("list2").textContent + "]")[0]
     let list3 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]

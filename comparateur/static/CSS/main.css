@@ -8,6 +8,10 @@ body {
     margin: 20px;
 }
 
+.pays-recup {
+    display : none
+}
+
 .Pays {
     grid-column: 2;
     /*width : 30%;*/
