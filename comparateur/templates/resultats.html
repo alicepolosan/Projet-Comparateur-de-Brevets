@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 <div>
 {% block content %}
-    <h1>{% block title %} Resultats {% endblock %}</h1>
+    <h1>{% block title %} Résultats {% endblock %}</h1>
     <hr>
     <!--{% for brevet in brevet_list %}
         <h2> {{ brevet['annee_depot'] }} </h2>
@@ -24,9 +24,11 @@
         </div>
         <div class = 'Pays'>
             <h3> <i class="fa fa-globe-europe"></i> Etats contractants </h3>
+            <div id = 'Pays'>
                 {% for pays in brevet_list[-1]['pays'] %}
                 <p> {{ pays }} </p>
                 {% endfor %}  
+            </div>
             <h3> Année de dépot : {{ brevet_list[-1]['annee_depot'] }} </h3> 
             <h3> Année de délivrance : {{ brevet_list[-1]['annee_delivrance'] }} </h3>
         </div>
