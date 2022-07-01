@@ -3,11 +3,11 @@
 {% block content %}
     <h1>{% block title %} Resultats {% endblock %}</h1>
     <hr>
-    {% for brevet in brevet_list %}
+    <!--{% for brevet in brevet_list %}
         <h2> {{ brevet['annee_depot'] }} </h2>
         <h4> {{ brevet['annee_delivrance'] }} </h4>
-        <!--<p> {{ brevet['pays'] }} </p> !--> 
-    {% endfor %}
+        <p> {{ brevet['pays'] }} </p> !
+    {% endfor %}--> 
     <p id = "list0"> {{list0}}</p>
     <p id = "list1"> {{list1}}</p>
     <p id = "list2"> {{list2}}</p>
@@ -24,13 +24,11 @@
         </div>
         <div class = 'Pays'>
             <h3> <i class="fa fa-globe-europe"></i> Etats contractants </h3>
-            {% for brevet in brevet_list %}
-                {% for pays in brevet['pays'] %}
+                {% for pays in brevet_list[-1]['pays'] %}
                 <p> {{ pays }} </p>
                 {% endfor %}  
-            <h3> Année de dépot : {{ brevet['annee_depot'] }} </h3> 
-            <h3> Année de délivrance : {{ brevet['annee_delivrance'] }} </h3>
-            {% endfor %}
+            <h3> Année de dépot : {{ brevet_list[-1]['annee_depot'] }} </h3> 
+            <h3> Année de délivrance : {{ brevet_list[-1]['annee_delivrance'] }} </h3>
         </div>
     </div>
 {% endblock %}
