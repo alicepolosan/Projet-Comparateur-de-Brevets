@@ -6,9 +6,9 @@ from wtforms.validators import InputRequired, Length
 L = ['Albanie','Allemagne','Autriche','Bulgarie','Belgique','Chypre','Croatie','Danemark','Espagne','Estonie','Finlande','France','Grèce','Hongrie','Irlande','Islande','Italie','Lettonie','Liechtenstein (cf. Suisse)','Lituanie','Luxembourg','Macédoine du Nord','Malte','Monaco','Norvège','Pays-Bas','Pologne','Portugal','République Tchèque','Roumanie','Royaume-Uni','Saint-Marin','Serbie','Slovaquie','Slovénie','Suède','Suisse','Turquie']
 
 class BrevetForm(FlaskForm):
-    annee_depot = StringField('Annee de depot', validators=[InputRequired(),
+    annee_depot = StringField('Annee de depot :', validators=[InputRequired(),
                                              Length(min=4, max=4)])
-    annee_delivrance = StringField('Annee de delivrance',
+    annee_delivrance = StringField('Annee de delivrance :',
                                 validators=[InputRequired(),
                                            Length(min = 4, max = 4)])
     #pays = []

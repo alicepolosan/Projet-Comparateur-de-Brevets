@@ -4,7 +4,7 @@
 
     <form method="POST" action="/">
         {{ form.csrf_token }}
-        <p>
+        <p class = "annee">
             {{ form.annee_depot.label }}
             {{ form.annee_depot(size=20) }}
         </p>
@@ -17,7 +17,7 @@
             </ul>
         {% endif %}
 
-        <p>
+        <p class = "annee">
             {{ form.annee_delivrance.label }}
             {{ form.annee_delivrance(size=20) }}
         </p>
@@ -180,6 +180,7 @@
                 <p> {{ form.p_37.label }}
                         {{ form.p_37(size=20) }}
                 </p>
+                <br/>
                 <p>
                 <input type="submit" value="Valider">
                 </p>

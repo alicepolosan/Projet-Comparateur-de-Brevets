@@ -17,7 +17,7 @@ L = ['Albanie','Allemagne','Autriche','Bulgarie','Belgique','Chypre','Croatie','
 def index():
     form = BrevetForm()
     if form.validate_on_submit():
-        if int(form.annee_delivrance.data) - 20 < int(form.annee_depot.data):
+        if int(form.annee_delivrance.data) - 20 < int(form.annee_depot.data) and 0 < int(form.annee_depot.data) < int(form.annee_delivrance.data):
             cases_cochees = [form.p_0.data, form.p_1.data, form.p_2.data,form.p_3.data,form.p_4.data,form.p_5.data,form.p_6.data,form.p_7.data,form.p_8.data,form.p_9.data,form.p_10.data,form.p_11.data,form.p_12.data,form.p_13.data,form.p_14.data,form.p_15.data,form.p_16.data,form.p_17.data,form.p_18.data,form.p_19.data,form.p_20.data,form.p_21.data,form.p_22.data,form.p_23.data,form.p_24.data,form.p_25.data,form.p_26.data,form.p_27.data,form.p_28.data,form.p_29.data,form.p_30.data,form.p_31.data,form.p_32.data,form.p_33.data,form.p_34.data,form.p_35.data,form.p_36.data,form.p_37.data]
             pays = []
             for i in range(38):
