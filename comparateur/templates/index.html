@@ -4,7 +4,7 @@
 
     <form method="POST" action="/">
         {{ form.csrf_token }}
-        <p>
+        <p class = "annee">
             {{ form.annee_depot.label }}
             {{ form.annee_depot(size=20) }}
         </p>
@@ -17,7 +17,7 @@
             </ul>
         {% endif %}
 
-        <p>
+        <p class = "annee">
             {{ form.annee_delivrance.label }}
             {{ form.annee_delivrance(size=20) }}
         </p>
@@ -36,21 +36,25 @@
                     {{ form.p_0(size=20) }}
                 </p>
 
-                <p class = "BU">
+                <p class = "BU"
+                    style = "color: blue">
                     {{ form.p_1.label }}
                     {{ form.p_1(size=20) }}
                 </p>
 
-                <p class = "BU">
+                <p class = "BU"
+                style = "color: blue">
                     {{ form.p_2.label }}
                     {{ form.p_2(size=20) }}
                 </p>
 
-                <p class = "BU">
+                <p class = "BU"
+                style = "color: blue">
                     {{ form.p_3.label }}
                     {{ form.p_3(size=20) }}
                 </p>
-                <p class = "BU">
+                <p class = "BU"
+                style = "color: blue">
                     {{ form.p_4.label }}
                     {{ form.p_4(size=20) }}
                 </p>
@@ -62,7 +66,8 @@
                     {{ form.p_6.label }}
                     {{ form.p_6(size=20) }}
                 </p>
-                <p class = "BU">
+                <p class = "BU"
+                style = "color: blue">
                     {{ form.p_7.label }}
                     {{ form.p_7(size=20) }}
                 </p>
@@ -70,15 +75,18 @@
                     {{ form.p_8.label }}
                     {{ form.p_8(size=20) }}
                 </p>
-                <p class = "BU">
+                <p class = "BU"
+                style = "color: blue">
                     {{ form.p_9.label }}
                     {{ form.p_9(size=20) }}
                 </p>
-                <p class = "BU">
+                <p class = "BU"
+                style = "color: blue">
                     {{ form.p_10.label }}
                     {{ form.p_10(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_11.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_11.label }}
                     {{ form.p_11(size=20) }}
                 </p>
                 <p> {{ form.p_12.label }}
@@ -95,25 +103,30 @@
                 <p> {{ form.p_15.label }}
                             {{ form.p_15(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_16.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_16.label }}
                             {{ form.p_16(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_17.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_17.label }}
                             {{ form.p_17(size=20) }}
                 </p>
                 <p> {{ form.p_18.label }}
                             {{ form.p_18(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_19.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_19.label }}
                             {{ form.p_19(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_20.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_20.label }}
                             {{ form.p_20(size=20) }}
                 </p>
                 <p> {{ form.p_21.label }}
                             {{ form.p_21(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_22.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_22.label }}
                             {{ form.p_22(size=20) }}
                 </p>
                 <p> {{ form.p_23.label }}
@@ -122,7 +135,8 @@
                 <p> {{ form.p_24.label }}
                             {{ form.p_24(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_25.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_25.label }}
                             {{ form.p_25(size=20) }}
                 </p>
                 <p> {{ form.p_26.label }}
@@ -130,7 +144,8 @@
                 </p>
             </div>
             <div class = "colonne3">
-                <p class = "BU"> {{ form.p_27.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_27.label }}
                             {{ form.p_27(size=20) }}
                 </p>
                 <p> {{ form.p_28.label }}
@@ -151,10 +166,12 @@
                 <p> {{ form.p_33.label }}
                         {{ form.p_33(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_34.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_34.label }}
                         {{ form.p_34(size=20) }}
                 </p>
-                <p class = "BU"> {{ form.p_35.label }}
+                <p class = "BU"
+                style = "color: blue"> {{ form.p_35.label }}
                         {{ form.p_35(size=20) }}
                 </p>
                 <p> {{ form.p_36.label }}
@@ -163,11 +180,13 @@
                 <p> {{ form.p_37.label }}
                         {{ form.p_37(size=20) }}
                 </p>
+                <br/>
                 <p>
                 <input type="submit" value="Valider">
                 </p>
             </div>
         </div>
+        <p style = "color: blue"> *Pays faisant partie du Brevet Unitaire</p><p>*Pays ne faisant pas partie du Brevet Unitaire</p>
     </form>
 
 {% endblock %}
