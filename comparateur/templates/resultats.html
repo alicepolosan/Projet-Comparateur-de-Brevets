@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 <div>
 {% block content %}
-    <h1>{% block title %} Resultats {% endblock %}</h1>
+    <h1>{% block title %} Résultats {% endblock %}</h1>
     
     <p id = "list0"> {{list0}}</p>
     <p id = "list1"> {{list1}}</p>
@@ -21,7 +21,7 @@
         <canvas id="BarCanvas" aria-label="chart" role ="img"> </canvas>
         </div>
         <div class = 'Pays'>
-            <h3> <i class="fa fa-globe-europe"></i> Etats contractants </h3>
+            <h3> <i class="fa fa-globe-europe"></i> Pays sélectionnés </h3>
             <div id = 'Pays'>
             </div>
             <h3> Année de dépot : {{ brevet_list[-1]['annee_depot'] }} </h3> 
