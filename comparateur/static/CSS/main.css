@@ -12,8 +12,8 @@ body {
     margin: 20px;
 }
 
-.pays-recup {
-    display : none
+.pays-recup {         /* On récupère les pays pour les utiliser dans le Javascript */
+    display : none    /* Mais seuls les pays sélectionnés par l'utilisateur seront affichés dans le cadre récapitulatif*/
 }
 
 .Pays {
@@ -21,11 +21,12 @@ body {
     border: 2px solid grey;
     background-color: white;
     text-align: center;
+    color : rgb(97, 96, 96);
     box-sizing: content-box;
  }
 
-#list0 { 
-    display : none
+#list0 {             /* Ces données sont dans le fichier html pour pouvoir les récupérer ensuite dans le Javascrip */
+    display : none   /* Pour un soucis de clareté et d'esthétique, il est préférable de ne pas afficher ces données */ 
 }
 
 #list1 {
@@ -44,6 +45,7 @@ body {
     display : none
 }
 
+ /* On utilise grid pour mettre la liste des pays sous forme de trois colonnes. */
 .container {
     display: grid;
     grid-template-columns: 

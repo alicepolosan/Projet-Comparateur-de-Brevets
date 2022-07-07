@@ -48,7 +48,8 @@ map.set(" Turquie ", "black")
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    const barCanvas = document.getElementById("BarCanvas");
+
+    const barCanvas = document.getElementById("BarCanvas"); /* On sélectionne l'élément canvas */
 
     /* Affichage des pays sélectionnés en couleur */
 
@@ -75,45 +76,48 @@ document.addEventListener("DOMContentLoaded", () => {
     let list2 = JSON.parse("[" + document.getElementById("list2").textContent + "]")[0]
     let list3 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
     let list4 = JSON.parse("[" + document.getElementById("list4").textContent + "]")[0]
-    
+
+    /* On crée une nouvelle instance à partir de la librairie Chart.js */
+    /* On lui passe deux arguments : le canvas sur lequel on va afficher le graphique et toute la configuration */
+
     const mixedChart = new Chart(barCanvas, {
-        type:'bar',
+        type:'bar', 
         data: {
             labels: list0,
             datasets: [
                 {
-                    type : 'line',
+                    type : 'line',                            /* type du graphique */
                     label: 'Coûts cumulés - Brevet Européen',
-                    data: list1,
+                    data: list1,                              /* données représentées par le graphique */ 
                     fill: false,
-                    backgroundColor: 'blue',
-                    borderColor: 'blue'
+                    backgroundColor: 'green',
+                    borderColor: 'green'
                 },
                 {
                     type : 'line',
                     label: 'Coûts cumulés - Brevet Unitaire',
                     data: list2,
                     fill: false,
-                    backgroundColor: 'green',
-                    borderColor: 'green'
+                    backgroundColor: 'blue',
+                    borderColor: 'blue'
                 },
                 {
-                type : 'bar',
-                label: 'Coûts par année - Brevet Unitaire',
-                data: list3,
-                backgroundColor:'lightgreen',
-                borderColor:'white'
-            }, 
-            {
-                type : 'bar',
-                label: 'Coûts par année - Brevet Européen',
-                data: list4,
-                backgroundColor:'lightblue',
-                borderColor:'white'
-            }]
+                    type : 'bar',
+                    label: 'Coûts par année - Brevet Unitaire',
+                    data: list3,
+                    backgroundColor:'lightblue',
+                    borderColor:'white'
+                 }, 
+                {
+                    type : 'bar',
+                    label: 'Coûts par année - Brevet Européen',
+                    data: list4,
+                    backgroundColor:'lightgreen',
+                    borderColor:'white'
+                }]
         },
-        options: { 
-            title: {
+        options: {                                               /* Système d'options pour modifier l'aspect du graphique  */
+            title: { 
                 display: true,
                 fontSize: 25 ,
                 position : 'top',
