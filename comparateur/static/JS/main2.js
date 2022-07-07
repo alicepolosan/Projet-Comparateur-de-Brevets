@@ -71,34 +71,34 @@ document.addEventListener("DOMContentLoaded", () => {
                     label: 'Coûts cumulés - Brevet Européen',
                     data: list1,
                     fill: false,
-                    backgroundColor: 'blue',
-                    borderColor: 'blue'
+                    backgroundColor: 'green',
+                    borderColor: 'green'
                 },
                 {
                     type : 'line',
                     label: 'Coûts cumulés - Brevet Unitaire',
                     data: list2,
                     fill: false,
-                    backgroundColor: 'green',
-                    borderColor: 'green'
+                    backgroundColor: 'blue',
+                    borderColor: 'blue'
                 },
                 {
                 type : 'bar',
                 label: 'Coûts par année - Brevet Unitaire',
                 data: list3,
-                backgroundColor:'lightgreen',
+                backgroundColor:'lightblue',
                 borderColor:'white'
             }, 
             {
                 type : 'bar',
                 label: 'Coûts par année - Brevet Européen',
                 data: list4,
-                backgroundColor:'lightblue',
+                backgroundColor:'lightgreen',
                 borderColor:'white'
             }]
         },
         options: { 
-            title: {
+            title: { 
                 display: true,
                 fontSize: 25 ,
                 position : 'top',
