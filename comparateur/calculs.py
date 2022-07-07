@@ -162,8 +162,9 @@ def calcul (brevet_list):
     list_year=liste_annees(brevet_list)
     return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU
 
-brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['France','Allemagne', 'Italie', 'Royaume-Uni','Espagne','Belgique','Turquie','Pays-Bas','Suisse','Portugal','Pologne','République Tchèque','Grèce','Suède','Autriche']}]
-list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
+brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['France','Allemagne']}]
+#'Italie', 'Royaume-Uni','Espagne','Belgique','Turquie','Pays-Bas','Suisse','Portugal','Pologne','République Tchèque','Grèce','Suède','Autriche'
+list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU=calcul(brevet_lt)
 
 print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
 true_values_BE= [46650,1128.49,1560.31,2006.52,2529.91,3216.34,3848.19,4639.06,5562.38,6589.17,7569.41,8559.75,9491.62,10544.62,11463.33,12557.65,13585.92]
