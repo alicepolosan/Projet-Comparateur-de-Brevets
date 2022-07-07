@@ -36,9 +36,7 @@ def index():
 @app.route('/resultats/')
 def resultats():
     list0, list1, list2, list3, list4, cumulBE, cumulBU = calcul(brevet_list)
-    ### socketio.emit("response", resultat)
     return render_template('resultats.html', brevet_list=brevet_list, list0 = list0, list1 = list1, list2 = list2, list3 = list3, list4 = list4, cumulBE = cumulBE, cumulBU = cumulBU)
-
 
 if __name__=="__main__":
     socketio.run(app, port=5001)
