@@ -3,23 +3,28 @@ import numpy as np
 import json 
 
 #On  crée manuellement une dataframe pandas qui reprend les données du fichier excel fourni par les porteurs de projet
-#On commence par définir la liste complète des pays concernés
+#On commence par définir la liste complète des pays concernés 
 Pays = ['Albanie', 'Allemagne', 'Autriche', 'Bulgarie', 'Belgique', 'Chypre', 'Croatie', 'Danemark', 'Espagne', 'Estonie', 'Finlande', 
         'France','Grèce', 'Hongrie', 'Irlande', 'Islande', 'Italie', 'Lettonie', 'Liechtenstein (cf. Suisse)', 'Lituanie', 'Luxembourg', 'Macédoine du Nord', 
         'Malte', 'Monaco', 'Norvège', 'Pays-Bas', 'Pologne', 'Portugal', 'République Tchèque', 'Roumanie', 'Royaume-Uni', 'Saint-Marin', 
         'Serbie', 'Slovaquie', 'Slovénie', 'Suède', 'Suisse', 'Turquie']
 n=len(Pays)
+
+#On définit ensuite la colonne de la dataframe indiquznt, pour chaque pays, s'il fait partie de la convention du brevet unitaire
 BU= ['non']*n
 
 L_oui=[1,2,3,4,7,9,10,11,16,17,19,20,22,25,27,34,35]
 for i in L_oui:
     BU[i]= 'oui'
 
+#On crée ensuite les 20 colonnes donnant, pour chaque pays et pour chaque année, les anuités à payer au cours de l'année en question
 indice= Pays.index('République Tchèque')
 
+#Annuités de l'année 1 
 année_1=[0]*n
-année_1[indice]= 41.00
+année_1[indice]= 41.00   #Au cours de l'année 1, seule la République Chèque fait payer une annuité
 
+#Annuités de l'année 2
 année_2=[0]*n
 année_2[0]=42
 année_2[1]=42
@@ -28,6 +33,7 @@ année_2[13]=46.55
 année_2[23]=30
 année_2[indice]=41
 
+#Les listes d'annuités des années suivantes sont reprises directement du fichier Excel, en assignant, pour chaque année, la valeur de 0 aux annuités des pays qui n'en font pas payer  
 année_3=[50,70,0,20,40,50,35,0,18.48,64,200,38,20,46.55,60,84,0,90,0,81,33,13,34.94,50,0,0,0,0,41,150,0,0,95,66,0,135,0,35]
 
 année_4=[67,70,0,20,55,60,42,148,23.06,77,125,38,50,233,90,97,0,120,105.26,92,41,16,46.59,55,134,40,53.15,0,41,160,0,70,115,
@@ -81,8 +87,14 @@ année_19=[542,1760,1566,768,555,600,773,645,490,585,850,730,1000,436,438,438,65
 année_20=[583,1940,1775,871,600,660,920,685,490,630,900,800,1100,436,468,483,650,420,1010.53,347,300,210,232.94,430,660,1400,
           330,721.89,978,500,762.50,650,810,663.50,1100,674,1010.53,294]
 
+# Ceci est la liste des coûts associés au brevet unitaire (BU) : la liste est de taille 21, le 1er coefficient correspondant au coût de demande d'effet unitaire
 couts_BU_annees=[1000,0,0,0,1000,355,515,670,845,1030,1205,1500,1805,2145,2495,2870,3280,3680,4095,4495,4895]
 
+#On crée alors le dictionnaire des colonnes de la dataframe: 
+# La 1re colonne est celle qui renseigne sur l'appartenance des pays au BU
+# La 2è colonne est celle des coûts de validation nationale pour l'ensemble des pays dans le cas du brevet européen (BE) 
+# La dataframe comprend seulement les coûts de validation nationale et des annuités à payer au cours des 20 ans, dans le cadre du BE --> les informations
+#relatives au BU sont contenues dans la liste couts_BU_annees ci-dessus, qui ne fait pas partie de la dataframe
 cols_dict={"BU": BU,
 "validation nationale/demande d'effet unitaire":[5000, 250,5000,5000, 250, 5000, 3500, 3500, 3500, 5000, 3500, 200, 
                                                             5000, 3500, 250, 3500, 5000, 3500, 200, 5000, 200, 3500, 5000, 200, 
@@ -109,32 +121,42 @@ cols_dict={"BU": BU,
           "année 19": année_19,
           "année 20": année_20,
           }
-
+#Création de la dataframe, indexée par les pays
 df = pd.DataFrame(cols_dict, index = Pays)
 
-def liste_annees (brevet_list):
-    dic=brevet_list[-1]
+#Ci-dessous sont implémentées 5 fonctions de calculs:
+
+#La fonction liste_annees renvoie la liste des années au cours duquel le brevet est effectif, donc à partir de la date de délivrance
+#jusqu'à la date de fin, c'est-à-dire 20 ans après la date de dépôt. En effet, seules ces années sont prises en compte dans le calcul
+# des coûts, car aucune annuité n'est payée avant l'année de délivrance.
+
+def liste_annees (brevet_list): #brevet_list est un dictionnaire de listes, chaque liste comportant 3 éléments:
+    # l'année de dépôt, l'année de délivrance, et la liste des pays souhaités
+    dic=brevet_list[-1] #on récupère la dernière liste 
     annee_depot=int(dic['annee_depot'])
     annee_delivrance=int(dic['annee_delivrance'])
     annee_fin= annee_depot + 20
     year_list= list(np.arange(annee_delivrance,annee_fin))
     return year_list
 
-
+#La fonction couts_annees renvoie prend en argument, les informations d'année de dépôt, d'année de délivrance et la liste des pays
+# où il est souhaité que le brevet entre en vigeur, et renvoie en sortie deux listes : la liste des coûts à payer par année avec le BE classique
+# et la liste des coûts annuels si on choisit d'adopter le BU. 
 def couts_année (brevet_list):
-    n=len(liste_annees(brevet_list))
+    n=len(liste_annees(brevet_list))   
     dic=brevet_list[-1]
-    pays= dic['pays']
-    data= df.loc[pays]
-    indices=["validation nationale/demande d'effet unitaire"]+ (list(data.columns))[23-n:] 
-    data=data[indices]
-    sommes= data.sum()
-    couts_BE= json.dumps((sommes.to_numpy().tolist()))   #[:n+1])
+    pays= dic['pays'] #liste des pays recherchés
+    data= df.loc[pays]  #dataframe des coûts pour ces pays
+    indices=["validation nationale/demande d'effet unitaire"]+ (list(data.columns))[23-n:] # seules les années à partir de l'année de délivrance nous intéressent car 
+    #les coûts ne sont payés qu'après l'année de délivrance. Il faut donc extraire les colonnes de la datframe qui correspondent à ces années-là
+    data=data[indices] #data est la dataframe sur laquelle nous faisons le calcul des coûts annuels: les lignes correspondent aux pays voulus et aux coûts associés, et les colonnes à l'une des années de validité du brevet accompagnées de la colonne des coûts de validation par pays
+    sommes= data.sum() #pour chaque année,on somme les annuités des pays
+    couts_BE= json.dumps((sommes.to_numpy().tolist()))  
     couts_BU_provisoire=[couts_BU_annees[0]] + couts_BU_annees [22-n:]
-    for country in pays:
-        if df.loc[country,'BU']=='non':
-           couts_BU_provisoire = (np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()).tolist()
-    couts_BU = json.dumps(couts_BU_provisoire)   #[:n+1]
+    for country in pays: #en choisissant le BU, il faut ajouter les coûts à payer pour les pays souhaités qui ne sont pas intégrés au BU
+        if df.loc[country,'BU']=='non': # on vérifie si le pays n'est pas dans le BU
+           couts_BU_provisoire = (np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()).tolist() # on actualise la liste des coûts en lui ajoutant les coûts annuels associés à ce pays 
+    couts_BU = json.dumps(couts_BU_provisoire)  
     return couts_BE, couts_BU
 
 
@@ -146,26 +168,22 @@ def couts_cumulés (brevet_list):
     indices=["validation nationale/demande d'effet unitaire"]+ (list(data.columns))[23-n:] 
     data=data[indices]
     sommes= data.sum()
-    couts_BE=(np.cumsum(sommes.to_numpy()).tolist())        #[:n+1]
+    couts_BE=(np.cumsum(sommes.to_numpy()).tolist())  #on renvoie cette fois-ci, non pas les listes des coûts annuels obtenus avec l'ensemble des pays recherchés,
+#mais les coûts cumulés sur les années     
+    last_cumul_BE=couts_BE[-1] #on récupère le coût total en choisissant le BE
     couts_BE=json.dumps(couts_BE)
-    couts_BU=np.cumsum(np.array([couts_BU_annees[0]] + couts_BU_annees [22-n:]))
+    couts_BU= np.cumsum(np.array([couts_BU_annees[0]] + couts_BU_annees [22-n:]))
     for country in pays:
         if df.loc[country,'BU']=='non':
-           couts_BU = (couts_BU + np.cumsum((data.loc[country]).to_numpy()))
-    couts_BU=couts_BU.tolist()    #[:n+1]
-    last_cumul_BE=couts_BE[-1]
-    last_cumul_BU=couts_BU[-1] 
-    couts_BU=json.dumps(couts_BU)
+           couts_BU = couts_BU + np.cumsum((data.loc[country]).to_numpy())
+    couts_BU = couts_BU.tolist()     
+    last_cumul_BU=couts_BU[-1] # on récupère le coût total à payer en choisissant le BU
+    couts_BU=json.dumps(couts_BU) 
     return couts_BE, couts_BU, last_cumul_BE,last_cumul_BU
 
+#La fonction calcul permet d'agréger les résultats renvoyés par les 3 fonctions précédentes
 def calcul (brevet_list):
     couts_BE_cumul,couts_BU_cumul,last_cumul_BE, last_cumul_BU  = couts_cumulés(brevet_list)
     couts_BE_per_year,couts_BU_per_year= couts_année(brevet_list)
     list_year=liste_annees(brevet_list)
     return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU
-
-#brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2021, 'pays': ['France','Allemagne','Royaume-Uni','Italie','Espagne','Belgique']}]
-
-#list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU =calcul(brevet_lt)
-
-#print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
