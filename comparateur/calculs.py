@@ -179,7 +179,7 @@ def couts_cumulés (brevet_list):
     couts_BU = couts_BU.tolist()     
     last_cumul_BU=couts_BU[-1] # on récupère le coût total à payer en choisissant le BU
     couts_BU=json.dumps(couts_BU) 
-    return couts_BE, couts_BU, last_cumul_BE,last_cumul_BU
+    return couts_BE, couts_BU, np.int(last_cumul_BE),np.int(last_cumul_BU)
 
 #La fonction calcul permet d'agréger les résultats renvoyés par les 3 fonctions précédentes
 def calcul (brevet_list):
