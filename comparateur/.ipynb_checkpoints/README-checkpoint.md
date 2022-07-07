@@ -1,12 +1,20 @@
 ## Prérequis pour l'exécution du programme :
 
-Liste des modules et packages à installer pour faire fonctionner le comparateur :
+Liste des modules et packages à installer pour faire fonctionner le comparateur ainsi que leurs versions :
 
-```python
-pip install flask
-pip install flask socketio
-pip install WTForm
-```
+- flask (2.1.2)
+- flask-socketio (5.2.0)
+- flask-wtf (1.0.1)
+- jinja2, fonctionne avec JavaScript (2.1.2)
+- numpy (1.24.2)
+- pandas (1.4.2)
+- wtforms, fonctionne avec JavaScript (3.0.1)
+
+On installe le tout (flask, flask-socketio, flask-wtf, numpy et pandas) avec un pip install.
+
+- Version de pip utilisée : 21.2.4 
+- Version de python utilisée : 3.9.12.
+
 
 ## Exécution du programme : 
 
