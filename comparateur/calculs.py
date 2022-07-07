@@ -2,8 +2,10 @@ import pandas as pd
 import numpy as np
 import json 
 
+#On  crée manuellement une dataframe pandas qui reprend les données du fichier excel fourni par les porteurs de projet
+#On commence par définir la liste complète des pays concernés
 Pays = ['Albanie', 'Allemagne', 'Autriche', 'Bulgarie', 'Belgique', 'Chypre', 'Croatie', 'Danemark', 'Espagne', 'Estonie', 'Finlande', 
-        'France','Grèce', 'Hongrie', 'Irlande', 'Islande', 'Italie', 'Lettonie', 'Liechtenstein', 'Lituanie', 'Luxembourg', 'Macédoine du Nord', 
+        'France','Grèce', 'Hongrie', 'Irlande', 'Islande', 'Italie', 'Lettonie', 'Liechtenstein (cf. Suisse)', 'Lituanie', 'Luxembourg', 'Macédoine du Nord', 
         'Malte', 'Monaco', 'Norvège', 'Pays-Bas', 'Pologne', 'Portugal', 'République Tchèque', 'Roumanie', 'Royaume-Uni', 'Saint-Marin', 
         'Serbie', 'Slovaquie', 'Slovénie', 'Suède', 'Suisse', 'Turquie']
 n=len(Pays)
@@ -31,10 +33,10 @@ année_3=[50,70,0,20,40,50,35,0,18.48,64,200,38,20,46.55,60,84,0,90,0,81,33,13,3
 année_4=[67,70,0,20,55,60,42,148,23.06,77,125,38,50,233,90,97,0,120,105.26,92,41,16,46.59,55,134,40,53.15,0,41,160,0,70,115,
          82.50,34,144,105.26,41]
 
-année_5=[83,90,0,72,75,80,58,168,44.11,96,150,38,80,290,114,106,60,140,126.32,115,52,20,58.23,90,168,100,64,51.56,82.0,
-         180.0,87.50,70,135,99.50,42,164,126.32,61]
+année_5=[83,90,0,72,75,80,58,168,44.11,96,150,38,80,290,114,106,60,140,126.32,115,52,20,58.23,90,168,100,64,51.56,82,
+         180,87.5,70,135,99.5,42,164,126.32,61]
 
-année_6=[100, 130,104,92,95,100,75,188,65.10, 120,200,76,90,393,134,115,90,160,147.37,139,66,23,69.88,125,203,160,74,77.34,
+année_6=[100,130,104,92,95,100,75,188,65.10,120,200,76,90,393,134,115,90,160,147.37,139,66,23,69.88,125,203,160,74,77.34,
          82,200,112.50,70,160,116,50,183,147.37,69]
 
 année_7=[117,180,208,113,110,120,85,215,107.47,135,250,96,100,393,150,128,120,180,168.42,162,82,26,81.53,140,223,220,85,103.13,
@@ -44,13 +46,13 @@ année_8=[150,240,313,138,135,140,110,242,133.78,155,300,136,115,393,176,141,170
          154.69,82,240,162.50,140,215,149,70,231,189.47,86.47]
 
 année_9=[167,290,417,195,165,160,125,275,167.88,180,350,180,140,393,194,158,200,270,231.58,208,115,33,104.82,155,289,340,117,
-         309.38,122,260,187.50,140,240,165.50,80,260,231.58,94]
+         309.38,122,260,187.5,140,240,165.5,80,260,231.58,94]
 
 année_10=[208,350,522,256,185,180,160,309,216.06,205,400,220,190,393,220,176,230,320,273.68,231,131,50,116.47,175,325,400,138,
           360.95,163,280,212.50,140,270,199,110,289,273.68,103]
 
 année_11=[225,470,626,307,215,200,200,342,270.82,245,450,260,240,393,242,193,310,320,315.79,289,148,65,128.12,220,355,500,
-          159,360.95,245,300,237.50,140,325,232,154,327,315.79,117]
+          159,360.95,245,300,237.5,140,325,232,154,327,315.79,117]
 
 année_12=[250,620,731,359,240,240,240,376,317.98,285,500,300,300,393,265,210,410,320,357.89,289,165,80,139.60,255,391,600,170,
           412.51,326,320,275,270,380,265.50,200,366,357.89,136]
@@ -109,8 +111,6 @@ cols_dict={"BU": BU,
           }
 
 df = pd.DataFrame(cols_dict, index = Pays)
-#df2=pd.read_excel('Excel.xlsx',index_col='Pays')
-#print(df2.columns)
 
 def liste_annees (brevet_list):
     dic=brevet_list[-1]
@@ -126,15 +126,15 @@ def couts_année (brevet_list):
     dic=brevet_list[-1]
     pays= dic['pays']
     data= df.loc[pays]
-    indices=list(data.columns)[1:] 
+    indices=["validation nationale/demande d'effet unitaire"]+ (list(data.columns))[23-n:] 
     data=data[indices]
     sommes= data.sum()
-    couts_BE= json.dumps((sommes.to_numpy().tolist())[:n+1])
-    couts_BU_provisoire=couts_BU_annees
+    couts_BE= json.dumps((sommes.to_numpy().tolist()))   #[:n+1])
+    couts_BU_provisoire=[couts_BU_annees[0]] + couts_BU_annees [22-n:]
     for country in pays:
         if df.loc[country,'BU']=='non':
-           couts_BU_provisoire = np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy().tolist()
-    couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n+1])
+           couts_BU_provisoire = (np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()).tolist()
+    couts_BU = json.dumps(couts_BU_provisoire)   #[:n+1]
     return couts_BE, couts_BU
 
 
@@ -143,18 +143,20 @@ def couts_cumulés (brevet_list):
     dic=brevet_list[-1]
     pays= dic['pays']
     data= df.loc[pays]
-    indices=list(data.columns)[1:]
+    indices=["validation nationale/demande d'effet unitaire"]+ (list(data.columns))[23-n:] 
     data=data[indices]
     sommes= data.sum()
-    couts_BE=(np.cumsum(sommes.to_numpy()).tolist())[:n+1]
+    couts_BE=(np.cumsum(sommes.to_numpy()).tolist())        #[:n+1]
     couts_BE=json.dumps(couts_BE)
-    couts_BU=np.cumsum(np.array(couts_BU_annees))
+    couts_BU=np.cumsum(np.array([couts_BU_annees[0]] + couts_BU_annees [22-n:]))
     for country in pays:
         if df.loc[country,'BU']=='non':
-           couts_BU = couts_BU + np.cumsum((data.loc[country]).to_numpy()).tolist()
-    couts_BU=couts_BU[:n+1]
-    couts_BU=json.dumps(couts_BU.tolist())
-    return couts_BE, couts_BU, couts_BE[-1], couts_BU[-1] 
+           couts_BU = (couts_BU + np.cumsum((data.loc[country]).to_numpy())).tolist()
+    couts_BU=couts_BU    #[:n+1]
+    last_cumul_BE=couts_BE[-1]
+    last_cumul_BU=couts_BU[-1] 
+    couts_BU=json.dumps(couts_BU)
+    return couts_BE, couts_BU, last_cumul_BE,last_cumul_BU
 
 def calcul (brevet_list):
     couts_BE_cumul,couts_BU_cumul,last_cumul_BE, last_cumul_BU  = couts_cumulés(brevet_list)
@@ -162,10 +164,8 @@ def calcul (brevet_list):
     list_year=liste_annees(brevet_list)
     return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU
 
-brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['France','Allemagne']}]
-#'Italie', 'Royaume-Uni','Espagne','Belgique','Turquie','Pays-Bas','Suisse','Portugal','Pologne','République Tchèque','Grèce','Suède','Autriche'
-list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU=calcul(brevet_lt)
+#brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2021, 'pays': ['France','Allemagne','Royaume-Uni','Italie','Espagne','Belgique']}]
 
-print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
-true_values_BE= [46650,1128.49,1560.31,2006.52,2529.91,3216.34,3848.19,4639.06,5562.38,6589.17,7569.41,8559.75,9491.62,10544.62,11463.33,12557.65,13585.92]
+#list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU =calcul(brevet_lt)
 
+#print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
