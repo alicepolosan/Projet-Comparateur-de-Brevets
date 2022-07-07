@@ -12,13 +12,16 @@
     <p class = "pays-recup"> {{ pays }} </p>
     {% endfor %}
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script> <!-- donne accés à la librairie Chart.js -->
     <script type="text/javascript" src={{ url_for("static", filename="JS/main2.js") }}></script>
      
     
     <div class = 'Résultats'>
         <div class = 'Chart'>
-        <canvas id="BarCanvas" aria-label="chart" role ="img"> </canvas>
+        <canvas id="BarCanvas" aria-label="chart" role ="img"> </canvas>  
+        <!-- On crée un canvas : élément html qui sera utilisé par le Javascript : on pourra créer nos graphique dessus -->
+        <!-- aria-label permet de décrire l'élément pour les lecteurs d'écran -->
+        <!-- le canvas aura un rôle d'image : élément visuel où l'on pourra découvrir les différents éléments-->
         </div>
         <div class = 'Pays'>
             <h3> <i class="fa fa-globe-europe"></i> Pays sélectionnés </h3>
@@ -27,8 +30,8 @@
             <h3> Année de dépot : {{ brevet_list[-1]['annee_depot'] }} </h3> 
             <h3> Année de délivrance : {{ brevet_list[-1]['annee_delivrance'] }} </h3>
             <h2> Bilan </h2>
-            <h3> Coûts cumulés Brevet Européen : {{list1[-2]}} </h3>
-            <h3> Coûts cumulés Brevet Unitaire : {{list2[-2]}} </h3>
+            <h3> Coûts cumulés Brevet Européen : {{cumulBE}} </h3>
+            <h3> Coûts cumulés Brevet Unitaire : {{cumulBU}} </h3>
         </div>
     </div>
 {% endblock %}

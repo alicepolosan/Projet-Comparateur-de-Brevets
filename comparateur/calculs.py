@@ -110,7 +110,7 @@ cols_dict={"BU": BU,
 
 df = pd.DataFrame(cols_dict, index = Pays)
 #df2=pd.read_excel('Excel.xlsx',index_col='Pays')
-print(df2.columns)
+#print(df2.columns)
 
 def liste_annees (brevet_list):
     dic=brevet_list[-1]
@@ -133,7 +133,7 @@ def couts_année (brevet_list):
     couts_BU_provisoire=couts_BU_annees
     for country in pays:
         if df.loc[country,'BU']=='non':
-           couts_BU_provisoire = np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()
+           couts_BU_provisoire = np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy().tolist()
     couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n+1])
     return couts_BE, couts_BU
 
