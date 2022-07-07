@@ -79,13 +79,13 @@ année_19=[542,1760,1566,768,555,600,773,645,490,585,850,730,1000,436,438,438,65
 année_20=[583,1940,1775,871,600,660,920,685,490,630,900,800,1100,436,468,483,650,420,1010.53,347,300,210,232.94,430,660,1400,
           330,721.89,978,500,762.50,650,810,663.50,1100,674,1010.53,294]
 
-couts_BU_annees=[0,0,0,1000,355,515,670,845,1030,1205,1500,1805,2145,2495,2870,3280,3680,4095,4495,4895]
+couts_BU_annees=[1000,0,0,0,1000,355,515,670,845,1030,1205,1500,1805,2145,2495,2870,3280,3680,4095,4495,4895]
 
-cols_dict={"validation nationale/demande d'effet unitaire":[5000, 250,5000,5000, 250, 5000, 3500, 3500, 3500, 5000, 3500, 200, 
+cols_dict={"BU": BU,
+"validation nationale/demande d'effet unitaire":[5000, 250,5000,5000, 250, 5000, 3500, 3500, 3500, 5000, 3500, 200, 
                                                             5000, 3500, 250, 3500, 5000, 3500, 200, 5000, 200, 3500, 5000, 200, 
                                                             3500, 3500, 5000, 5000, 5000, 5000, 250, 5000, 5000, 5000, 3500, 
                                                             3500, 200, 5000],
-          "BU": BU,
           "année 1": année_1,
           "année 2": année_2,
           "année 3": année_3,
@@ -109,6 +109,8 @@ cols_dict={"validation nationale/demande d'effet unitaire":[5000, 250,5000,5000,
           }
 
 df = pd.DataFrame(cols_dict, index = Pays)
+#df2=pd.read_excel('Excel.xlsx',index_col='Pays')
+print(df2.columns)
 
 def liste_annees (brevet_list):
     dic=brevet_list[-1]
@@ -118,22 +120,21 @@ def liste_annees (brevet_list):
     year_list= list(np.arange(annee_delivrance,annee_fin))
     return year_list
 
-brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['Allemagne', 'Albanie']}]
 
 def couts_année (brevet_list):
     n=len(liste_annees(brevet_list))
     dic=brevet_list[-1]
     pays= dic['pays']
     data= df.loc[pays]
-    indices=list(data.columns)[2:] 
+    indices=list(data.columns)[1:] 
     data=data[indices]
     sommes= data.sum()
-    couts_BE= json.dumps((sommes.to_numpy().tolist())[:n])
+    couts_BE= json.dumps((sommes.to_numpy().tolist())[:n+1])
     couts_BU_provisoire=couts_BU_annees
     for country in pays:
         if df.loc[country,'BU']=='non':
            couts_BU_provisoire = np.array(couts_BU_provisoire) + (data.loc[country]).to_numpy()
-    couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n])
+    couts_BU = json.dumps((couts_BU_provisoire.tolist())[:n+1])
     return couts_BE, couts_BU
 
 
@@ -142,26 +143,28 @@ def couts_cumulés (brevet_list):
     dic=brevet_list[-1]
     pays= dic['pays']
     data= df.loc[pays]
-    indices=list(data.columns)[2:]
+    indices=list(data.columns)[1:]
     data=data[indices]
     sommes= data.sum()
-    couts_BE=(np.cumsum(sommes.to_numpy()).tolist())[:n]
+    couts_BE=(np.cumsum(sommes.to_numpy()).tolist())[:n+1]
     couts_BE=json.dumps(couts_BE)
     couts_BU=np.cumsum(np.array(couts_BU_annees))
     for country in pays:
         if df.loc[country,'BU']=='non':
            couts_BU = couts_BU + np.cumsum((data.loc[country]).to_numpy()).tolist()
-    couts_BU=couts_BU[:n]
+    couts_BU=couts_BU[:n+1]
     couts_BU=json.dumps(couts_BU.tolist())
-    return couts_BE, couts_BU
+    return couts_BE, couts_BU, couts_BE[-1], couts_BU[-1] 
 
 def calcul (brevet_list):
-    couts_BE_cumul,couts_BU_cumul = couts_cumulés(brevet_list)
+    couts_BE_cumul,couts_BU_cumul,last_cumul_BE, last_cumul_BU  = couts_cumulés(brevet_list)
     couts_BE_per_year,couts_BU_per_year= couts_année(brevet_list)
     list_year=liste_annees(brevet_list)
-    return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year
+    return list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year,last_cumul_BE, last_cumul_BU
 
+brevet_lt=[{'annee_depot': 2018, 'annee_delivrance': 2020, 'pays': ['France','Allemagne', 'Italie', 'Royaume-Uni','Espagne','Belgique','Turquie','Pays-Bas','Suisse','Portugal','Pologne','République Tchèque','Grèce','Suède','Autriche']}]
 list_year,couts_BE_cumul,couts_BU_cumul, couts_BU_per_year,couts_BE_per_year=calcul(brevet_lt)
 
 print('annees:',list_year,'couts_BE_cumul:',couts_BE_cumul,'couts_BU_cumul:', couts_BU_cumul,'couts_BU_per_year', couts_BU_per_year,'couts_BE_per_year:',couts_BE_per_year) 
+true_values_BE= [46650,1128.49,1560.31,2006.52,2529.91,3216.34,3848.19,4639.06,5562.38,6589.17,7569.41,8559.75,9491.62,10544.62,11463.33,12557.65,13585.92]
 
