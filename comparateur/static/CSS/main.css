@@ -49,6 +49,7 @@ body {
     display : none
 }
 
+ /* On utilise grid pour mettre la liste des pays sous forme de trois colonnes. */
 .container {
     display: grid;
     grid-template-columns: 
@@ -72,6 +73,3 @@ body {
     background-color: #f8f7f6;
   }
 
-.BU {
-    color: rgb(255, 0, 0);
-  }
