@@ -147,16 +147,16 @@ def couts_cumulés (brevet_list):
     data=data[indices]
     sommes= data.sum()
     couts_BE=(np.cumsum(sommes.to_numpy()).tolist())        #[:n+1]
+    last_cumul_BE=couts_BE[-1]
     couts_BE=json.dumps(couts_BE)
     couts_BU=np.cumsum(np.array([couts_BU_annees[0]] + couts_BU_annees [22-n:]))
     for country in pays:
         if df.loc[country,'BU']=='non':
            couts_BU = (couts_BU + np.cumsum((data.loc[country]).to_numpy()))
     couts_BU=couts_BU.tolist()    #[:n+1]
-    last_cumul_BE=couts_BE[-1]
     last_cumul_BU=couts_BU[-1] 
     couts_BU=json.dumps(couts_BU)
-    return couts_BE, couts_BU, last_cumul_BE,last_cumul_BU
+    return couts_BE, couts_BU, np.int(last_cumul_BE),np.int(last_cumul_BU)
 
 def calcul (brevet_list):
     couts_BE_cumul,couts_BU_cumul,last_cumul_BE, last_cumul_BU  = couts_cumulés(brevet_list)

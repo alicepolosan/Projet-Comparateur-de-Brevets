@@ -25,6 +25,17 @@ body {
     box-sizing: content-box;
  }
 
+/*.Bilan {
+    background-color : rgb(221, 220, 220);
+}*/
+
+#BE {
+    background-color: lightgreen;
+}
+#BU {
+    background-color: lightblue;
+}
+
 #list0 {             /* Ces données sont dans le fichier html pour pouvoir les récupérer ensuite dans le Javascrip */
     display : none   /* Pour un soucis de clareté et d'esthétique, il est préférable de ne pas afficher ces données */ 
 }

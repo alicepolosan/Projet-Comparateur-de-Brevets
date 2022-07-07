@@ -24,14 +24,17 @@
         <!-- le canvas aura un rôle d'image : élément visuel où l'on pourra découvrir les différents éléments-->
         </div>
         <div class = 'Pays'>
+            <div class = 'Bilan'>
+                <h2> <i class="fa-fa-scale-balanced"></i> Bilan </h2>
+                <h3 id="BE"> Coûts cumulés Brevet Européen : {{cumulBE}} € </h3>
+                <h3 id="BU"> Coûts cumulés Brevet Unitaire : {{cumulBU}} € </h3>
+            </div>
+
             <h3> <i class="fa fa-globe-europe"></i> Pays sélectionnés </h3>
             <div id = 'Pays'>
             </div>
             <h3> Année de dépot : {{ brevet_list[-1]['annee_depot'] }} </h3> 
             <h3> Année de délivrance : {{ brevet_list[-1]['annee_delivrance'] }} </h3>
-            <h2> Bilan </h2>
-            <h3> Coûts cumulés Brevet Européen : {{cumulBE}} € </h3>
-            <h3> Coûts cumulés Brevet Unitaire : {{cumulBU}} € </h3>
         </div>
     </div>
 {% endblock %}
