@@ -18,15 +18,10 @@ body {
 
 .Pays {
     grid-column: 2;
-    /*width : 30%;*/
-    /*height : 50%;*/
     border: 2px solid grey;
     background-color: white;
     text-align: center;
     box-sizing: content-box;
-    /*border-radius: 5px;*/
-    /*padding: auto;*/
-    /*margin: 40px; */
  }
 
 #list0 { 
@@ -70,8 +65,4 @@ body {
 .colonne3 {
     grid-area: c3;
     background-color: #f8f7f6;
-  }
-
-.BU {
-    color: rgb(255, 0, 0);
   }

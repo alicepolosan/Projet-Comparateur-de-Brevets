@@ -1,3 +1,8 @@
+/* Ce document est le javascript associé à resultats.html. */
+
+/* Création d'un dictionnaire (clé : pays, valeur : couleur (bleu/noir))
+But : afficher les pays en couleur (bleu/noir) dans la page html de résultats 
+(pour cela, il faut coder la correspondance entre pays et couleur). */
 
 let map = new Map()
 map.set(" Albanie ",  "black")
@@ -39,28 +44,38 @@ map.set(" Slovaquie ", "black")
 map.set(" Suisse ", "black")
 map.set(" Turquie ", "black")
 
+/* fin de la création du dictionnaire */
+
 document.addEventListener("DOMContentLoaded", () => {
     
     const barCanvas = document.getElementById("BarCanvas");
-    let Pays_p = document.querySelectorAll(".pays-recup");
+
+    /* Affichage des pays sélectionnés en couleur */
+
+    /* Récupération des pays sélectionnés */
+    let Pays_p = document.querySelectorAll(".pays-recup"); 
     let Pays = [];
     for (let i = 0; i < Pays_p.length; i++) {
         Pays.push(Pays_p[i].textContent);
     }
-    console.log(Pays)
+    
+    /* Affichage des pays sélectionnés en couleur (bleu/noir) dans l'onglet de résultats */
     for (let i = 0; i < Pays.length; i++) {
         let my_p = document.createElement('p')
-        console.log(Pays[i])
-        console.log(map.get(Pays[i]))
         my_p.textContent = Pays[i]
         my_p.style.color = map.get(Pays[i])
         document.getElementById('Pays').append(my_p)
     }
+
+    /* Affichage de la comparaison*/
+
+    /* Récupération des listes des résultats déposées dans resultats.html et conversion*/
     let list0 = JSON.parse("[" + document.getElementById("list0").textContent + "]")[0]
     let list1 = JSON.parse("[" + document.getElementById("list1").textContent + "]")[0]
     let list2 = JSON.parse("[" + document.getElementById("list2").textContent + "]")[0]
     let list3 = JSON.parse("[" + document.getElementById("list3").textContent + "]")[0]
     let list4 = JSON.parse("[" + document.getElementById("list4").textContent + "]")[0]
+    
     const mixedChart = new Chart(barCanvas, {
         type:'bar',
         data: {
