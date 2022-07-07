@@ -1,20 +1,17 @@
 from xmlrpc.client import Boolean
 from flask_wtf import FlaskForm
-from wtforms import (StringField, BooleanField)
-from wtforms.validators import InputRequired, Length
+from wtforms import (StringField, BooleanField) # On importe le type de questions dont on va se servir (champ de texte pour les dates et cases à cocher pour les pays).
+from wtforms.validators import InputRequired, Length 
 
 L = ['Albanie','Allemagne','Autriche','Bulgarie','Belgique','Chypre','Croatie','Danemark','Espagne','Estonie','Finlande','France','Grèce','Hongrie','Irlande','Islande','Italie','Lettonie','Liechtenstein (cf. Suisse)','Lituanie','Luxembourg','Macédoine du Nord','Malte','Monaco','Norvège','Pays-Bas','Pologne','Portugal','République Tchèque','Roumanie','Royaume-Uni','Saint-Marin','Serbie','Slovaquie','Slovénie','Suède','Suisse','Turquie']
 
 class BrevetForm(FlaskForm):
+    # On créé dans cette classe les questions du formulaire utilisateurs (dates à saisir dans un champ de saisie et cases des pays à cocher).
     annee_depot = StringField('Année de dépôt :', validators=[InputRequired(),
                                              Length(min=4, max=4)])
-    annee_delivrance = StringField('Année de délivrance :',
+    annee_delivrance = StringField('Année de délivrance :', 
                                 validators=[InputRequired(),
                                            Length(min = 4, max = 4)])
-    #pays = []
-    #for i in range (len(L)) : 
-     #   pays.append(BooleanField(L[i]))
-
     p_0 = BooleanField(L[0])
     p_1 = BooleanField(L[1])
     p_2 = BooleanField(L[2])
@@ -25,7 +22,7 @@ class BrevetForm(FlaskForm):
     p_7 = BooleanField(L[7])
     p_8 = BooleanField(L[8])
     p_9 = BooleanField(L[9])
-    p_10 = BooleanField(L[10])
+    p_10= BooleanField(L[10])
     p_11= BooleanField(L[11])
     p_12= BooleanField(L[12])
     p_13= BooleanField(L[13])
@@ -53,9 +50,3 @@ class BrevetForm(FlaskForm):
     p_35= BooleanField(L[35])
     p_36= BooleanField(L[36])
     p_37= BooleanField(L[37])
-
-
-
-
-    #for k in range(len(L)):
-     #   globals()[f"p_{k}"] = BooleanField(L[k])

@@ -2,19 +2,23 @@
 <div>
 {% block content %}
     <h1>{% block title %} Résultats {% endblock %}</h1>
-    
-    <p id = "list0"> {{list0}}</p>
-    <p id = "list1"> {{list1}}</p>
-    <p id = "list2"> {{list2}}</p>
-    <p id = "list3"> {{list3}}</p>
-    <p id = "list4"> {{list4}}</p>
+
+    <!--Récupération des listes de calcul (cf. calculs.py) renvoyée dans render_template('resultats.html', ...)(cf. app.py)
+    But : Permettre l'utilisation de ces valeurs dans main2.js pour ensuite afficher les résultats.-->
+    <p id = "list0"> {{list0}}</p> <!--Liste des années-->
+    <p id = "list1"> {{list1}}</p> <!--Liste des coûts cumulés (BE)-->
+    <p id = "list2"> {{list2}}</p> <!--Liste des coûts cumulés (BU)-->
+    <p id = "list3"> {{list3}}</p> <!--Liste des coûts par année (BU)-->
+    <p id = "list4"> {{list4}}</p> <!--Liste des coûts par année (BE)-->
+
+    <!--Récupération des pays sélectionnés renvoyés dans render_template('index.html', ...) (cf. app.py)
+    But : Permettre l'utilisation de ces valeurs dans main2.js pour ensuite les afficher en couleur (noir/bleu).-->
     {% for pays in brevet_list[-1]['pays'] %}
-    <p class = "pays-recup"> {{ pays }} </p>
+    <p class = "pays-recup"> {{ pays }} </p>  
     {% endfor %}
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script> <!-- donne accés à la librairie Chart.js -->
     <script type="text/javascript" src={{ url_for("static", filename="JS/main2.js") }}></script>
-     
     
     <div class = 'Résultats'>
         <div class = 'Chart'>
@@ -31,7 +35,7 @@
             </div>
 
             <h3> <i class="fa fa-globe-europe"></i> Pays sélectionnés </h3>
-            <div id = 'Pays'>
+            <div id = 'Pays'> <!--Lieu de l'affichage des pays sélectionnés (avec couleurs bleu/noir), afficahge codé dans main2.js-->
             </div>
             <h3> Année de dépot : {{ brevet_list[-1]['annee_depot'] }} </h3> 
             <h3> Année de délivrance : {{ brevet_list[-1]['annee_delivrance'] }} </h3>

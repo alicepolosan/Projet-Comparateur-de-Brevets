@@ -25,10 +25,6 @@ body {
     box-sizing: content-box;
  }
 
-/*.Bilan {
-    background-color : rgb(221, 220, 220);
-}*/
-
 #BE {
     background-color: lightgreen;
 }
@@ -56,6 +52,7 @@ body {
     display : none
 }
 
+ /* On utilise grid pour mettre la liste des pays sous forme de trois colonnes. */
 .container {
     display: grid;
     grid-template-columns: 
